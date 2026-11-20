@@ -1,0 +1,16 @@
+{
+  "staleAfterMs": 15000,
+  "offlineAfterMs": 50000,
+  "correlationMs": 30000,
+  "retentionHours": 24,
+  "thresholds": {
+    "cpu": [65, 80, 95],
+    "memory": [70, 85, 96],
+    "disk": [70, 85, 95],
+    "bandwidth": [600, 800, 950],
+    "latency": [75, 130, 250],
+    "loss": [0.5, 2, 7],
+    "authFailures": [2, 5, 12],
+    "suspicious": [1, 2, 5]
+  }
+}

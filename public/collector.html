@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cicada | Local collector</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/collector.js"></script>
+</head>
+<body class="collector-body">
+  <header class="topbar collector-header">
+    <a href="/" class="brand"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>cicada<span class="brand-point">.</span></a>
+    <div class="top-actions"><span class="live" id="uplink" role="status"><i></i> Connecting</span></div>
+  </header>
+  <main class="page collector-page">
+    <form id="login" class="panel login" hidden>
+      <h1>Unlock local collector</h1>
+      <label for="token">Collector operator token</label>
+      <input id="token" type="password" required autocomplete="off">
+      <button class="button primary">Unlock</button>
+    </form>
+    <div id="app" hidden>
+      <section class="page-heading">
+        <div><p class="eyebrow">CUSTOMER ENVIRONMENT</p><h1>Local collector</h1><p>Inspect local telemetry and verify the exact bytes prepared for regional ingest.</p></div>
+        <label class="environment-label">Collector<select id="site"></select></label>
+      </section>
+      <section class="summary-grid proof-summary" id="summary" aria-label="Delivery summary"></section>
+      <section class="panel demo-panel" id="scenario-panel" hidden>
+        <div class="panel-heading"><div><h2>Simulated telemetry</h2><p>Inject a signal or change collector connectivity.</p></div></div>
+        <div id="scenarios" class="scenario-buttons">
+          <button class="button" data-kind="secret">Secret in log</button>
+          <button class="button" data-kind="auth">Failed logins</button>
+          <button class="button" data-kind="network">Latency spike</button>
+          <button class="button" data-kind="cpu">CPU deviation</button>
+          <button class="button" data-kind="correlation">Correlated alerts</button>
+          <button class="button" data-kind="late">Late event</button>
+          <button class="button" data-kind="duplicate">Duplicate delivery</button>
+          <button class="button" data-kind="disconnect" id="disconnect">Disconnect uplink</button>
+          <button class="button" data-kind="pause" id="pause">Pause collection</button>
+        </div>
+      </section>
+      <p id="message" role="status" class="message" hidden></p>
+      <section class="detail-grid">
+        <article class="panel">
+          <div class="panel-heading"><div><h2>Raw source events</h2><p>Local storage · <span id="retention"></span> retention</p></div><span class="chip fair">Local only</span></div>
+          <label class="field">Local event<select id="raw-events"></select></label>
+          <pre id="raw">Waiting for telemetry</pre>
+        </article>
+        <article class="panel">
+          <div class="panel-heading"><div><h2>Egress proof</h2><p>Immutable wire body recorded before transfer.</p></div><span id="delivery-state" class="chip"></span></div>
+          <label class="field">Payload ID<select id="payloads"></select></label>
+          <p id="payload-info" class="payload-info"></p>
+          <pre id="wire">Waiting for telemetry</pre>
+          <p id="digest" class="digest"></p>
+          <button type="button" class="button" id="copy">Copy exact payload</button>
+        </article>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
